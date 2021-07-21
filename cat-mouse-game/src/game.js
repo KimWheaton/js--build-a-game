@@ -2,29 +2,29 @@ import Mouse from "./mouse.js";
 import Cat from "./cat.js";
 import InputHandler from "./input.js";
 
-// console.log("game loaded");
-
-const GAMESTATE = {
-    PAUSED: 0,
-    RUNNING: 1,
-    MENU: 2,
-    GAMEOVER: 3,
-};
+// const GAMESTATE = {
+//     PAUSED: 0,
+//     RUNNING: 1,
+//     MENU: 2,
+//     GAMEOVER: 3,
+// }
 
 export default class Game {
     constructor(gameWidth, gameHeight) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.gamestate = GAMESTATE.MENU;
         this.cat = new Cat(this);
         this.mouse = new Mouse(this);
         this.gameObjects = [];
-        this.lives = 3;
+        // this.gamestate = GAMESTATE.MENU;
     }
 
     start() {
-        this.mouse = new Mouse(this);
-        this.cat = new Cat(this);
+        this.gameObjects = [
+            this.mouse,
+            this.cat
+        ];
+
         new InputHandler(this.mouse);
 
         // if (
@@ -34,36 +34,43 @@ export default class Game {
         //     return;
         
         // this.cat.reset();
-        // this.gameObjects = [this.cat, this.rat];
         // this.gamestate = GAMESTATE.RUNNING;    
     }
 
     update(deltaTime) {
-        this.mouse.update(deltaTime);
-        this.cat.update(deltaTime);
-
+        this.gameObjects.forEach(object => object.update(deltaTime))
+        
         // if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
-
+        
         // if (
-        //     this.gamestate === GAMESTATE.PAUSED ||
-        //     this.gamestate === GAMESTATE.MENU ||
+            //     this.gamestate === GAMESTATE.PAUSED ||
+            //     this.gamestate === GAMESTATE.MENU ||
+            //     this.gamestate === GAMESTATE.GAMEOVER
+            // )
+            //     return;
+    };
+
+    detectCollision(mouse, cat) {
+        let rectM = mouse
+        let rectC = cat
+
+        if (rectM.position.x < rectC.position.x + rectC.width &&
+            rectM.position.x + rectM.width > rectC.position.x &&
+            rectM.position.y < rectC.position.y + rectC.height &&
+            rectM.position.y + rectM.height > rectC.position.y) {
+            console.log("collision detected!");   
+            return true;
+            }    
+
+        // if (detectCollision(mouse, cat)) {
         //     this.gamestate === GAMESTATE.GAMEOVER
-        // )
-        //     return;
+        //  ** add here - meow or mouse squeak audio file **
         // }    
-
-        // [...this.gameObjects, ...this.bricks].forEach(object =>
-        //     object.update(deltaTime)
-        //     );
-
-        // this.bricks = this.bricks.filter(brick => !brick.markedForDeletion);    
     }
 
     draw(ctx) {       
-        this.mouse.draw(ctx); 
-        this.cat.draw(ctx);
-    }    
-    //     [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
+        this.gameObjects.forEach(object => object.draw(ctx))
+    };    
 
     //     if (this.gamestate === GAMESTATE.PAUSED) {
     //         ctx.rect(0, 0, this.gameWidth, this.gameHeight);

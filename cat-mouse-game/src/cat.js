@@ -1,14 +1,14 @@
 export default class Cat {
 
+//?Create an array of cats so they can be from different positions and directions?
+    
     constructor(game) {
-        this.image = document.getElementById("img_cat");
+        this.image = document.getElementById("img_cat2");
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
-        this.size = 80;
-        this.reset();
-    }
-
-    reset() {
+        this.game = game;
+        this.width = 80;
+        this.height = 100;
         this.position = { x: 100, y: 400 };
         this.speed = { x: 3, y: -2 };
     }
@@ -18,18 +18,13 @@ export default class Cat {
             this.image, 
             this.position.x, 
             this.position.y, 
-            this.size, 
-            this.size
+            this.width, 
+            this.height
             );
     }    
     
     update(deltaTime) {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
-
-        // if (detectCollision(this, this.game.paddle)) {
-        //     this.speed.y = -this.speed.y;
-        //     this.position.y = this.game.paddle.position.y - this.size;
-        // }
     }    
 }
