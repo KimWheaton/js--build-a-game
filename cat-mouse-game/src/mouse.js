@@ -1,10 +1,10 @@
 export default class Mouse {
 
-    constructor(gameWidth, gameHeight) {
+    constructor(game) {
         this.image = document.getElementById("img_mouse");
         this.size = 60;
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
+        this.gameWidth = game.gameWidth;
+        this.gameHeight = game.gameHeight;
 
         this.maxSpeedX = 7;
         this.speedX = 0;
@@ -12,8 +12,8 @@ export default class Mouse {
         this.speedY = 0;
 
         this.position = {
-            x: gameWidth / 2 - this.size / 2,
-            y: gameHeight / 2 - this.size / 2
+            x: game.gameWidth / 2 - this.size / 2,
+            y: game.gameHeight / 2 - this.size / 2
         }
     }
 

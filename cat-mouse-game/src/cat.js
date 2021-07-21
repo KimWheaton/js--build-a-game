@@ -1,9 +1,9 @@
 export default class Cat {
 
-    constructor(gameWidth, gameHeight) {
+    constructor(game) {
         this.image = document.getElementById("img_cat");
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
+        this.gameWidth = game.gameWidth;
+        this.gameHeight = game.gameHeight;
         this.size = 80;
         this.reset();
     }

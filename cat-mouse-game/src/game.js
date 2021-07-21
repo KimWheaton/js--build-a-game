@@ -1,5 +1,6 @@
 import Mouse from "./mouse.js";
 import Cat from "./cat.js";
+import InputHandler from "./input.js";
 
 // console.log("game loaded");
 
@@ -16,33 +17,40 @@ export default class Game {
         this.gameHeight = gameHeight;
         this.gamestate = GAMESTATE.MENU;
         this.cat = new Cat(this);
-        this.rat = new Rat(this);
+        this.mouse = new Mouse(this);
         this.gameObjects = [];
         this.lives = 3;
     }
 
     start() {
-        if (
-            this.gamestate !== GAMESTATE.MENU &&
-            this.gamestate !== GAMESTATE.NEWLEVEL
-        )
-            return;
+        this.mouse = new Mouse(this);
+        this.cat = new Cat(this);
+        new InputHandler(this.mouse);
+
+        // if (
+        //     this.gamestate !== GAMESTATE.MENU &&
+        //     this.gamestate !== GAMESTATE.NEWLEVEL
+        // )
+        //     return;
         
-        this.cat.reset();
-        this.gameObjects = [this.cat, this.rat];
-        this.gamestate = GAMESTATE.RUNNING;    
+        // this.cat.reset();
+        // this.gameObjects = [this.cat, this.rat];
+        // this.gamestate = GAMESTATE.RUNNING;    
     }
 
     update(deltaTime) {
-        if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
+        this.mouse.update(deltaTime);
+        this.cat.update(deltaTime);
 
-        if (
-            this.gamestate === GAMESTATE.PAUSED ||
-            this.gamestate === GAMESTATE.MENU ||
-            this.gamestate === GAMESTATE.GAMEOVER
-        )
-            return;
-        }    
+        // if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
+
+        // if (
+        //     this.gamestate === GAMESTATE.PAUSED ||
+        //     this.gamestate === GAMESTATE.MENU ||
+        //     this.gamestate === GAMESTATE.GAMEOVER
+        // )
+        //     return;
+        // }    
 
         // [...this.gameObjects, ...this.bricks].forEach(object =>
         //     object.update(deltaTime)
@@ -51,51 +59,54 @@ export default class Game {
         // this.bricks = this.bricks.filter(brick => !brick.markedForDeletion);    
     }
 
-    draw(ctx) {        
-        [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
+    draw(ctx) {       
+        this.mouse.draw(ctx); 
+        this.cat.draw(ctx);
+    }    
+    //     [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
 
-        if (this.gamestate === GAMESTATE.PAUSED) {
-            ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-            ctx.fillStyle = "rgba(0,0,0,0.5)";
-            ctx.fill();
+    //     if (this.gamestate === GAMESTATE.PAUSED) {
+    //         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+    //         ctx.fillStyle = "rgba(0,0,0,0.5)";
+    //         ctx.fill();
 
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
-        }
+    //         ctx.font = "30px Arial";
+    //         ctx.fillStyle = "white";
+    //         ctx.textAlign = "center";
+    //         ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
+    //     }
 
-        if (this.gamestate === GAMESTATE.MENU) {
-            ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-            ctx.fillStyle = "rgba(0,0,0,1)";
-            ctx.fill();
+    //     if (this.gamestate === GAMESTATE.MENU) {
+    //         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+    //         ctx.fillStyle = "rgba(0,0,0,1)";
+    //         ctx.fill();
 
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText(
-                "press the UP arrow key to start",
-                this.gameWidth / 2, 
-                this.gameHeight / 2
-                );
-        }
-        if (this.gamestate === GAMESTATE.GAMEOVER) {
-            ctx.rect(0, 0, this.gameWidth, this.gameHeight);
-            ctx.fillStyle = "rgba(0,0,0,1)";
-            ctx.fill();
+    //         ctx.font = "30px Arial";
+    //         ctx.fillStyle = "white";
+    //         ctx.textAlign = "center";
+    //         ctx.fillText(
+    //             "press the UP arrow key to start",
+    //             this.gameWidth / 2, 
+    //             this.gameHeight / 2
+    //             );
+    //     }
+    //     if (this.gamestate === GAMESTATE.GAMEOVER) {
+    //         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+    //         ctx.fillStyle = "rgba(0,0,0,1)";
+    //         ctx.fill();
 
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
-        }
-    }
+    //         ctx.font = "30px Arial";
+    //         ctx.fillStyle = "white";
+    //         ctx.textAlign = "center";
+    //         ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
+    //     }
+    // }
 
-    togglePause() {
-        if (this.gamestate == GAMESTATE.PAUSED) {
-            this.gamestate = GAMESTATE.RUNNING;
-        } else {
-            this.gamestate = GAMESTATE.PAUSED;
-        }
-    }
+    // togglePause() {
+    //     if (this.gamestate == GAMESTATE.PAUSED) {
+    //         this.gamestate = GAMESTATE.RUNNING;
+    //     } else {
+    //         this.gamestate = GAMESTATE.PAUSED;
+    //     }
+    // }
 }
