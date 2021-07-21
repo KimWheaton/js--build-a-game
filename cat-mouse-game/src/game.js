@@ -1,4 +1,4 @@
-import Rat from "../src/rat.js";
+import Mouse from "./mouse.js";
 import Cat from "./cat.js";
 
 // console.log("game loaded");

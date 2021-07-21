@@ -50,8 +50,6 @@ export default class Mouse {
 
     update(deltaTime) {
 
-        if (!deltaTime) return;
-
         this.position.x += this.speedX;
 
             if (this.position.x < 0) this.position.x = 0;
