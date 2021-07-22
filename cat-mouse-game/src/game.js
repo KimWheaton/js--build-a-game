@@ -33,7 +33,7 @@ export default class Game {
         // )
         //     return;
         
-        // this.cat.reset();
+        // this.mouse.reset();
         // this.gamestate = GAMESTATE.RUNNING;    
     }
 
@@ -61,10 +61,10 @@ export default class Game {
             console.log("collision detected!");   
             return true;
             }    
-
-        // if (detectCollision(mouse, cat)) {
-        //     this.gamestate === GAMESTATE.GAMEOVER
-        //  ** add here - meow or mouse squeak audio file **
+        else {
+            return false;
+        }
+    // //     this.gamestate === GAMESTATE.GAMEOVER
         // }    
     }
 

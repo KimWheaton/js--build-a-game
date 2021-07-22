@@ -10,7 +10,7 @@ export default class Cat {
         this.width = 80;
         this.height = 100;
         this.position = { x: 100, y: 400 };
-        this.speed = { x: 3, y: -2 };
+        this.speed = { x: 2, y: -2 };
     }
 
     draw(ctx) {
