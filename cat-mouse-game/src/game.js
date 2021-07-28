@@ -4,7 +4,9 @@ import InputHandler from "./input.js";
 
 const image1 = document.getElementById("img_cat1");
 const image2 = document.getElementById("img_cat2");
-// const image3 = document.getElementById("img_cat3");
+const image3 = document.getElementById("img_cat1");
+const image4 = document.getElementById("img_cat2");
+
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
@@ -23,7 +25,9 @@ export default class Game {
         let cats = []
         let images = [
             image1,
-            image2
+            image2,
+            image3,
+            image4
         ];
         for (let image of images) {
             let c = new Cat(this, image);
