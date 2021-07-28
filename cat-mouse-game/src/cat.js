@@ -8,7 +8,7 @@ export default class Cat {
         this.width = 80;
         this.height = 100;
         this.speed = { 
-            x: Math.floor(Math.random() * 5),
+            x: Math.floor(Math.random() * 6),
             y: Math.floor(Math.random() * -4) 
             }
         this.position = {
