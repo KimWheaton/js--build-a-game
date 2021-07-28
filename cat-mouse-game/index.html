@@ -9,11 +9,16 @@
   <script type="module" src="./src/index.js" defer></script>
 </head>
 <body>
-  <canvas id="gameScreen" width="600" height="600"></canvas>
-  <img id="img_mouse" src="./images/mouse.png">
-  <img id="img_cat1" src="./images/cat1.png">
-  <img id="img_cat2" src="./images/cat2.png">
-  <audio id="audio_squeak" src="./assets/squeak.mp3"></audio>
+  <div id="game">
+  <h1>Cats and Mouse Game</h1>
+    <canvas id="gameScreen" width="600" height="600" src="./images/floor-600x600.png"></canvas>
+    <img id="img_mouse" src="./images/mouse.png">
+    <img id="img_cat1" src="./images/cat1.png">
+    <img id="img_cat2" src="./images/cat2.png">
+    <audio id="audio_squeak" src="./assets/squeak.mp3"></audio>
+    <h2>Press the space bar to start the game</h2>
+    <h3>Use the arrow keys to keep the mouse away from the cats</h3>
+  </div>  
 </body>
 </html>
 

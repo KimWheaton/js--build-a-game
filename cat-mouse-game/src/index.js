@@ -19,7 +19,7 @@ function gameLoop(timestamp) {
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
     // let squeak = document.getElementById("audio_squeak");
-    // let colliding = game.detectCollision(game.mouse, game.cat);
+    // let colliding = game.detectCollision(game.mouse, game.cats);
     // if (colliding === true) {
     //     if (squeaked === false) {
     //         squeak.play()
