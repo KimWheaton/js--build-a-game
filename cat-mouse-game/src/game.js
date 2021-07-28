@@ -22,7 +22,7 @@ export default class Game {
     }
 
     createCatArray = function() {
-        let cats = []
+        let catsArray = []
         let images = [
             image1,
             image2,
@@ -30,10 +30,10 @@ export default class Game {
             image4
         ];
         for (let image of images) {
-            let c = new Cat(this, image);
-            cats.push(c)
+            let cat = new Cat(this, image);
+            catsArray.push(cat)
         }
-        return cats;
+        return catsArray;
     };
 
     start() {
@@ -51,9 +51,9 @@ export default class Game {
         this.gameObjects.forEach(object => object.update(deltaTime))
     };
 
-    detectCollision(mouse, cats) {
+    detectCollision(mouse, cat) {
         let rectM = mouse
-        let rectC = cats
+        let rectC = cat
 
         if (rectM.position.x < rectC.position.x + rectC.width &&
             rectM.position.x + rectM.width > rectC.position.x &&
