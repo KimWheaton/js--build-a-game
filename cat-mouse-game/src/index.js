@@ -16,33 +16,32 @@ let squeaked = false;
 let lastTime = 0;
 
 function gameLoop(timestamp) {
-    
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
-    let squeak = document.getElementById("audio_squeak");
-    let colliding = game.detectCollision(game.mouse, game.cat);
-    if (colliding === true) {
-        if (squeaked === false) {
-            squeak.play()
-            squeaked = true;
-        }
-    } 
+    // let squeak = document.getElementById("audio_squeak");
+    // let colliding = game.detectCollision(game.mouse, game.cat);
+    // if (colliding === true) {
+    //     if (squeaked === false) {
+    //         squeak.play()
+    //         squeaked = true;
+    //     }
+    // } 
        
     ctx.clearRect(0, 0, 600, 600);
     
-    if (squeaked === true) {
-        ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-        ctx.fillStyle = "rgba(0,0,0,1)";
-        ctx.fill();    
-        ctx.font = "30px Arial";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT / 2);
+    // if (squeaked === true) {
+    //     ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    //     ctx.fillStyle = "rgba(0,0,0,1)";
+    //     ctx.fill();    
+    //     ctx.font = "30px Arial";
+    //     ctx.fillStyle = "white";
+    //     ctx.textAlign = "center";
+    //     ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT / 2);
 
-    }   else {
+    // }   else {
         game.update(deltaTime);
         game.draw(ctx);
-    }
+    // }
     
     requestAnimationFrame(gameLoop);
 }

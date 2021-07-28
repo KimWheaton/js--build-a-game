@@ -2,8 +2,8 @@ export default class Mouse {
 
     constructor(game) {
         this.image = document.getElementById("img_mouse");
-        this.width = 60;
-        this.height = 60;
+        this.width = 30;
+        this.height = 30;
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
 

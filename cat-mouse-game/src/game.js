@@ -2,20 +2,43 @@ import Mouse from "./mouse.js";
 import Cat from "./cat.js";
 import InputHandler from "./input.js";
 
+const image1 = document.getElementById("img_cat1");
+const image2 = document.getElementById("img_cat2");
+// const image3 = document.getElementById("img_cat3");
+
+let canvas = document.getElementById("gameScreen");
+let ctx = canvas.getContext("2d");
+
+
 export default class Game {
-    constructor(gameWidth, gameHeight) {
+    constructor(gameWidth, gameHeight, image) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.cat = new Cat(this);
+        this.cats = this.createCatArray();
         this.mouse = new Mouse(this);
         this.gameObjects = [];
     }
 
+    createCatArray = function() {
+        let cats = []
+        let images = [
+            image1,
+            image2
+        ];
+        for (let image of images) {
+            let c = new Cat(this, image);
+            cats.push(c)
+        }
+        return cats;
+    };
+
     start() {
         this.gameObjects = [
             this.mouse,
-            this.cat
         ];
+        for (let cat of this.cats) {
+            this.gameObjects.push(cat)
+        }
 
         new InputHandler(this.mouse, this);
     };
@@ -24,24 +47,25 @@ export default class Game {
         this.gameObjects.forEach(object => object.update(deltaTime))
     };
 
-    detectCollision(mouse, cat) {
-        let rectM = mouse
-        let rectC = cat
+    // detectCollision(mouse, cat) {
+    //     let rectM = mouse
+    //     let rectC = cat
 
-        if (rectM.position.x < rectC.position.x + rectC.width &&
-            rectM.position.x + rectM.width > rectC.position.x &&
-            rectM.position.y < rectC.position.y + rectC.height &&
-            rectM.position.y + rectM.height > rectC.position.y) {
-            return true;
-            }    
-        else {
-            return false;
-        }
-    };
+    //     if (rectM.position.x < rectC.position.x + rectC.width &&
+    //         rectM.position.x + rectM.width > rectC.position.x &&
+    //         rectM.position.y < rectC.position.y + rectC.height &&
+    //         rectM.position.y + rectM.height > rectC.position.y) {
+    //         return true;
+    //         }    
+    //     else {
+    //         return false;
+    //     }
+    // };
 
-    draw(ctx) {      
+    draw(ctx) {    
         this.gameObjects.forEach(object => object.draw(ctx))
     };    
+
 
 
     //     if (this.gamestate === GAMESTATE.MENU) {
@@ -53,7 +77,7 @@ export default class Game {
     //         ctx.fillStyle = "white";
     //         ctx.textAlign = "center";
     //         ctx.fillText(
-    //             "press the UP arrow key to start",
+    //             "press the Spacebar to start",
     //             this.gameWidth / 2, 
     //             this.gameHeight / 2
     //             );
