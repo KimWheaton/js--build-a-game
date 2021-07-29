@@ -4,20 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cat and Mouse</title>
+  <title>Cats and Mouse Game</title>
   <link rel="stylesheet" href="./src/style.css">
+  <script src="lib/easytimer/dist/easytimer.min.js"></script>
   <script type="module" src="./src/index.js" defer></script>
 </head>
 <body>
   <div id="game">
-  <h1>Cats and Mouse Game</h1>
+    <!-- <h2>Cats and Mouse</h2> -->
+    <h2>Use arrow keys to keep the mouse away from the cats</h2>
+    <h3>press the spacebar to start</h3>
+    <div id="basicUsage">00:00:00</div>
     <canvas id="gameScreen" width="600" height="600"></canvas>
     <img id="img_mouse" src="./images/mouseT.png">
     <img id="img_cat1" src="./images/cat1T.png">
     <img id="img_cat2" src="./images/cat2T.png">
-    <audio id="audio_squeak" src="./assets/squeak.mp3"></audio>
-    <h2>Press the space bar to start</h2>
-    <h3>Use arrow keys to keep the mouse away from the cats</h3>
+    <audio id="audio_squeak" src="./assets/mousesqueak.mp3"></audio>
   </div>  
 </body>
 </html>

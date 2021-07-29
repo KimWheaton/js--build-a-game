@@ -5,15 +5,15 @@ export default class Cat {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.game = game;
-        this.width = 80;
-        this.height = 100;
+        this.width = 100;
+        this.height = 125;
         this.speed = { 
-            x: Math.floor(Math.random() * 6),
+            x: Math.floor(Math.random() * 5),
             y: Math.floor(Math.random() * -4) 
             }
         this.position = {
-            x: Math.floor(Math.random() * this.gameWidth - this.width / 2),
-            y: Math.floor(Math.random() * this.gameHeight - this.height / 2)
+            x: Math.floor(Math.random() * this.gameWidth - this.width),
+            y: Math.floor(Math.random() * this.gameHeight - this.height)
             }
         };
     

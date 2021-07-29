@@ -2,6 +2,7 @@ import Mouse from "./mouse.js";
 import Cat from "./cat.js";
 import InputHandler from "./input.js";
 import Game from "./game.js";
+// import Timer from "./easytimer.js";
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
@@ -28,6 +29,15 @@ function gameLoop(timestamp) {
             }
         } 
     }
+
+    // let timerInstance = new easytimer.Timer();
+        
+    // let timer = new Timer();
+    // timer.start();
+    // timer.addEventListener('secondsUpdated', function (e) {
+    //     $('#basicUsage').html(timer.getTimeValues().toString());
+    // });
+
     ctx.clearRect(0, 0, 600, 600);
     
     if (squeaked === true) {

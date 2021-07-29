@@ -7,10 +7,8 @@ const image2 = document.getElementById("img_cat2");
 const image3 = document.getElementById("img_cat1");
 const image4 = document.getElementById("img_cat2");
 
-
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
-
 
 export default class Game {
     constructor(gameWidth, gameHeight, image) {
