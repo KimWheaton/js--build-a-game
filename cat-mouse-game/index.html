@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cats and Mouse Game</title>
   <link rel="stylesheet" href="./src/style.css">
-  <script src="lib/easytimer/dist/easytimer.min.js"></script>
+  <!-- <script type="module" src="./src/easytimer.js"></script> -->
   <script type="module" src="./src/index.js" defer></script>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- <h2>Cats and Mouse</h2> -->
     <h2>Use arrow keys to keep the mouse away from the cats</h2>
     <h3>press the spacebar to start</h3>
-    <div id="basicUsage">00:00:00</div>
+    <div id="score">Score: </div>
     <canvas id="gameScreen" width="600" height="600"></canvas>
     <img id="img_mouse" src="./images/mouseT.png">
     <img id="img_cat1" src="./images/cat1T.png">
